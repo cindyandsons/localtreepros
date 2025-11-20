@@ -1,0 +1,1277 @@
+<!DOCTYPE html>
+<html lang="en-ZA">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- SEO & METADATA -->
+    <title>Local Tree Pro's | Expert Tree Felling Cape Town & Gauteng</title>
+    <meta name="description" content="Professional tree felling, stump removal, and landscaping services in Cape Town, Johannesburg, and Pretoria. Founded in 2011. Fully qualified rope access teams.">
+    <meta name="keywords" content="Tree Felling, Stump Removal, Cape Town, Johannesburg, Pretoria, Landscaping, Tree Trimming, Local Tree Pros, Emile Pelser">
+    <meta name="author" content="Emile Pelser - Local Tree Pros">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://localtreepros.co.za/">
+    <meta property="og:title" content="Local Tree Pro's - Professional Tree Felling Services">
+    <meta property="og:description" content="Expert tree removal and maintenance in Cape Town & Gauteng. Get a free quote today.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1598867524061-3a1737a92136?q=80&w=1200&auto=format&fit=crop">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://x.com/services25281">
+    <meta property="twitter:title" content="Local Tree Pro's">
+    <meta property="twitter:description" content="Expert tree removal and maintenance in Cape Town & Gauteng.">
+
+    <!-- FONTS & ICONS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* -----------------------------------------------------------
+           CSS VARIABLES & RESET
+        ----------------------------------------------------------- */
+        :root {
+            --primary-red: #D32F2F; /* Bold Red */
+            --primary-hover: #B71C1C;
+            --dark-black: #0f0f0f;
+            --soft-black: #1a1a1a;
+            --pure-white: #ffffff;
+            --off-white: #f4f4f4;
+            --earth-green: #388E3C;
+            --earth-brown: #795548;
+            --text-grey: #cccccc;
+            --shadow: 0 10px 30px rgba(0,0,0,0.5);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: var(--dark-black);
+            color: var(--off-white);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+            color: var(--pure-white);
+        }
+
+        a { text-decoration: none; color: inherit; transition: var(--transition); }
+        ul { list-style: none; }
+        img { max-width: 100%; height: auto; display: block; }
+
+        /* -----------------------------------------------------------
+           UTILITIES & ANIMATIONS
+        ----------------------------------------------------------- */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .text-center { text-align: center; }
+        .text-red { color: var(--primary-red); }
+        .text-green { color: var(--earth-green); }
+        
+        /* Animation Classes (Triggered by JS IntersectionObserver) */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal-left.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .zoom-in {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: all 0.8s ease-out;
+        }
+
+        .zoom-in.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* -----------------------------------------------------------
+           NAVIGATION
+        ----------------------------------------------------------- */
+        #navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem 0;
+            z-index: 1000;
+            transition: var(--transition);
+            background: linear-gradient(to bottom, rgba(0,0,0,0.9), transparent);
+        }
+
+        #navbar.scrolled {
+            background: rgba(15, 15, 15, 0.95);
+            padding: 1rem 0;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.5);
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--pure-white);
+            border: 2px solid var(--primary-red);
+            padding: 5px 15px;
+            letter-spacing: 2px;
+        }
+
+        .logo span { color: var(--primary-red); }
+
+        .nav-links { display: flex; gap: 2rem; }
+
+        .nav-links a {
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background: var(--primary-red);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover { color: var(--primary-red); }
+        .nav-links a:hover::after { width: 100%; }
+
+        /* Mobile Menu Toggle */
+        .hamburger { display: none; cursor: pointer; font-size: 1.5rem; }
+
+        /* -----------------------------------------------------------
+           HERO SECTION
+        ----------------------------------------------------------- */
+        #hero {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://images.unsplash.com/photo-1589923158776-0d593e876702?q=80&w=1920&auto=format&fit=crop'); /* Chainsaw/Wood Image */
+            background-size: cover;
+            background-position: center;
+            opacity: 0.4; /* Per instructions: 50% range */
+            z-index: -1;
+            animation: scaleBg 20s infinite alternate;
+        }
+        
+        /* Dark Overlay gradient */
+        #hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(45deg, rgba(211, 47, 47, 0.3), rgba(0,0,0,0.9));
+            z-index: -1;
+        }
+
+        @keyframes scaleBg {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.1); }
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
+            line-height: 1.1;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: var(--off-white);
+            font-weight: 300;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 35px;
+            background-color: var(--primary-red);
+            color: var(--pure-white);
+            font-weight: 700;
+            text-transform: uppercase;
+            border-radius: 50px;
+            border: 2px solid var(--primary-red);
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 5px 15px rgba(211, 47, 47, 0.4);
+        }
+
+        .btn:hover {
+            background-color: transparent;
+            color: var(--pure-white);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(211, 47, 47, 0.2);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--pure-white);
+            margin-left: 10px;
+            box-shadow: none;
+        }
+        .btn-outline:hover {
+            background: var(--pure-white);
+            color: var(--dark-black);
+        }
+
+        /* -----------------------------------------------------------
+           INTRO / ABOUT SECTION
+        ----------------------------------------------------------- */
+        #about {
+            padding: 100px 0;
+            background-color: var(--soft-black);
+            position: relative;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            border-left: 5px solid var(--primary-red);
+            padding-left: 20px;
+        }
+
+        .personal-note {
+            background: rgba(255,255,255,0.05);
+            padding: 30px;
+            border-radius: 10px;
+            margin-top: 30px;
+            border-left: 3px solid var(--earth-green);
+        }
+
+        .about-img-wrapper {
+            position: relative;
+        }
+
+        .about-img {
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            filter: grayscale(20%);
+        }
+
+        /* -----------------------------------------------------------
+           SERVICES SECTION
+        ----------------------------------------------------------- */
+        #services {
+            padding: 100px 0;
+            background-color: var(--dark-black);
+            background-image: radial-gradient(circle at top right, #1a1a1a 0%, #000 100%);
+        }
+
+        .section-header {
+            margin-bottom: 60px;
+            text-align: center;
+        }
+
+        .section-header h2 { font-size: 2.5rem; }
+        .section-header p { color: var(--text-grey); max-width: 600px; margin: 0 auto; }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: var(--soft-black);
+            padding: 40px 30px;
+            border-radius: 8px;
+            border-bottom: 4px solid var(--primary-red);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            background: #222;
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            color: var(--earth-brown);
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 { font-size: 1.4rem; }
+
+        .service-card p {
+            color: var(--text-grey);
+            font-size: 0.95rem;
+        }
+
+        /* -----------------------------------------------------------
+           AI TOOLS SECTION
+        ----------------------------------------------------------- */
+        #ai-tools {
+            padding: 100px 0;
+            background-color: #0a0a0a;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #ai-tools::before {
+            content: '';
+            position: absolute;
+            top: 0; right: 0; width: 50%; height: 100%;
+            background: radial-gradient(circle at center, rgba(211, 47, 47, 0.1), transparent 70%);
+            pointer-events: none;
+        }
+
+        .ai-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .ai-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 15px;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            transition: var(--transition);
+            position: relative;
+            backdrop-filter: blur(10px);
+        }
+
+        .ai-card:hover {
+            border-color: var(--primary-red);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(211, 47, 47, 0.1);
+        }
+
+        .ai-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .ai-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--primary-red);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .ai-input-group {
+            margin-bottom: 20px;
+        }
+
+        .ai-input {
+            width: 100%;
+            padding: 15px;
+            background: rgba(0,0,0,0.3);
+            border: 1px solid #333;
+            border-radius: 8px;
+            color: white;
+            margin-bottom: 10px;
+            font-family: inherit;
+        }
+        
+        .ai-file-label {
+            display: block;
+            width: 100%;
+            padding: 20px;
+            border: 2px dashed #444;
+            text-align: center;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+            color: #aaa;
+        }
+        
+        .ai-file-label:hover {
+            border-color: var(--primary-red);
+            color: white;
+            background: rgba(255,255,255,0.02);
+        }
+
+        .ai-result {
+            background: rgba(0,0,0,0.4);
+            padding: 15px;
+            border-radius: 8px;
+            min-height: 100px;
+            font-size: 0.9rem;
+            color: #ddd;
+            border-left: 3px solid var(--earth-green);
+            display: none; /* Hidden by default */
+            white-space: pre-wrap;
+        }
+
+        .ai-result.visible {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .spinner {
+            display: none;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+            margin-left: 10px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* -----------------------------------------------------------
+           LOCATIONS BANNER
+        ----------------------------------------------------------- */
+        #locations {
+            padding: 80px 0;
+            background: var(--primary-red);
+            color: var(--pure-white);
+            text-align: center;
+        }
+
+        .location-tags {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .loc-tag {
+            background: rgba(0,0,0,0.2);
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* -----------------------------------------------------------
+           REVIEWS SECTION
+        ----------------------------------------------------------- */
+        #reviews {
+            padding: 100px 0;
+            background-color: var(--soft-black);
+            position: relative;
+        }
+        
+        /* Background decorative image */
+        #reviews::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url('https://images.unsplash.com/photo-1612509838295-85e0882a89cb?q=80&w=1200&auto=format&fit=crop'); /* Wood Texture */
+            opacity: 0.05;
+            pointer-events: none;
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .review-card {
+            background: rgba(255,255,255,0.05);
+            padding: 30px;
+            border-radius: 10px;
+            position: relative;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .quote-icon {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2rem;
+            color: rgba(255,255,255,0.1);
+        }
+
+        .stars { color: #FFD700; margin-bottom: 15px; }
+
+        .review-text { font-style: italic; margin-bottom: 20px; }
+
+        .reviewer-name {
+            font-weight: 700;
+            color: var(--primary-red);
+        }
+        
+        .bark-link {
+            display: inline-block;
+            margin-top: 40px;
+            color: var(--text-grey);
+            text-decoration: underline;
+            font-size: 0.9rem;
+        }
+
+        /* -----------------------------------------------------------
+           CTA / CONTACT
+        ----------------------------------------------------------- */
+        #contact {
+            padding: 100px 0;
+            background: linear-gradient(to right, #000, #1a1a1a);
+        }
+
+        .contact-flex {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .contact-details {
+            margin-top: 40px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: rgba(255,255,255,0.05);
+            padding: 15px 25px;
+            border-radius: 50px;
+            transition: var(--transition);
+        }
+
+        .contact-item:hover { background: rgba(255,255,255,0.1); }
+        .contact-item i { color: var(--primary-red); font-size: 1.2rem; }
+
+        /* -----------------------------------------------------------
+           FOOTER
+        ----------------------------------------------------------- */
+        footer {
+            background: #000;
+            padding: 30px 0;
+            text-align: center;
+            border-top: 1px solid #222;
+            color: #666;
+            font-size: 0.85rem;
+        }
+
+        /* -----------------------------------------------------------
+           FLOATING BUTTONS
+        ----------------------------------------------------------- */
+        .floating-container {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            flex-direction: column-reverse; /* Stack upwards */
+            gap: 15px;
+            z-index: 9999;
+        }
+
+        .float-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+        }
+
+        .float-btn:hover { transform: scale(1.1); }
+        
+        /* Tooltip */
+        .float-btn::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            right: 70px;
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: 0.2s;
+            white-space: nowrap;
+        }
+        
+        .float-btn:hover::after { opacity: 1; right: 75px; }
+
+        .float-wa { background-color: #25D366; }
+        .float-email { background-color: #EA4335; }
+        .float-x { background-color: #000000; border: 1px solid #333; }
+
+        /* -----------------------------------------------------------
+           RESPONSIVE MEDIA QUERIES
+        ----------------------------------------------------------- */
+        @media (max-width: 992px) {
+            .hero-title { font-size: 2.8rem; }
+            .about-grid { grid-template-columns: 1fr; }
+            .about-img-wrapper { order: -1; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 0; right: -100%;
+                height: 100vh;
+                width: 70%;
+                background: var(--dark-black);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transition: 0.5s ease;
+                box-shadow: -5px 0 15px rgba(0,0,0,0.5);
+            }
+            
+            .nav-links.active { right: 0; }
+            .hamburger { display: block; color: var(--pure-white); z-index: 1001; }
+            
+            .hero-title { font-size: 2.2rem; }
+            .btn { padding: 12px 25px; width: 100%; margin: 10px 0 0 0; }
+            .btn-outline { margin: 10px 0 0 0; }
+            
+            /* Adjust floating buttons for mobile to be smaller/less intrusive */
+            .floating-container { bottom: 20px; right: 20px; gap: 10px; }
+            .float-btn { width: 50px; height: 50px; font-size: 1.2rem; }
+        }
+
+        @media (min-width: 2000px) {
+            /* TV / Large Screens */
+            .container { max-width: 1600px; }
+            html { font-size: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Root Element for SPA-style Logic -->
+    <div id="app"></div>
+
+    <script>
+        // -----------------------------------------------------------
+        // API & UTILS
+        // -----------------------------------------------------------
+        const apiKey = ""; // System provided key
+        
+        async function callGeminiText(prompt) {
+            try {
+                const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        contents: [{ parts: [{ text: prompt }] }],
+                        systemInstruction: { parts: [{ text: "You are a friendly, helpful, expert arborist assistant for a company called 'Local Tree Pro's' in South Africa. Keep answers concise, professional, and safety-conscious." }] }
+                    })
+                });
+                
+                if(!response.ok) throw new Error("API Error");
+                
+                const data = await response.json();
+                return data.candidates[0].content.parts[0].text;
+            } catch (error) {
+                console.error(error);
+                return "Sorry, I'm having trouble connecting to the server right now. Please try again later.";
+            }
+        }
+
+        async function callGeminiVision(base64Image, prompt) {
+            try {
+                const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        contents: [{
+                            parts: [
+                                { text: prompt },
+                                { inlineData: { mimeType: "image/png", data: base64Image } }
+                            ]
+                        }],
+                        systemInstruction: { parts: [{ text: "You are an expert arborist. Analyze the tree image for species, health, and potential risks. Be concise." }] }
+                    })
+                });
+
+                if(!response.ok) throw new Error("API Error");
+                
+                const data = await response.json();
+                return data.candidates[0].content.parts[0].text;
+            } catch (error) {
+                console.error(error);
+                return "Sorry, I couldn't analyze that image. Please try another one.";
+            }
+        }
+
+        // -----------------------------------------------------------
+        // DATA / CONFIG
+        // -----------------------------------------------------------
+        const COMPANY_INFO = {
+            name: "Local Tree Pro's",
+            established: 2011,
+            phone: "+27780324359",
+            wa_phone: "27780324359",
+            email: "localtreeprossa@gmail.com",
+            twitter_handle: "services25281",
+            bark_link: "https://www.bark.com/en/za/b/local-pros/nvn89/",
+            twitter_link: "https://x.com/services25281",
+            locations: ["Cape Town (HQ)", "Johannesburg", "Pretoria", "Gauteng Surrounds"]
+        };
+
+        const SERVICES = [
+            { icon: "fa-tree", title: "Tree Felling", desc: "Specialized removal of dangerous or unwanted trees using advanced rigging and safety techniques." },
+            { icon: "fa-circle-notch", title: "Stump Removal", desc: "Complete stump grinding and extraction to clear your land for new projects." },
+            { icon: "fa-scissors", title: "Pruning & Shaping", desc: "Scientific pruning to promote tree health, safety, and aesthetic appeal." },
+            { icon: "fa-leaf", title: "Palm Trimming", desc: "Expert cleaning and shaping of palm trees to maintain their tropical beauty." },
+            { icon: "fa-hard-hat", title: "Rope Access", desc: "Accessing difficult-to-reach trees in confined spaces without damaging property." },
+            { icon: "fa-broom", title: "Site Clearance", desc: "Full site cleanup and removal of green waste after every job." }
+        ];
+
+        const REVIEWS = [
+            { 
+                name: "Veroneque", 
+                text: "Emile en sy span was uitstekend, geen boom of taak is vir hulle n uitdaging nie. Hulle weet presies wat om te doen en hoe om jou eiendom te beskerm. Ek sal hulle vir enige iemand aanbeveel wat hulle bome wil verwyder. Dankie vir julle wonderlike diens",
+                rating: 5 
+            },
+            { 
+                name: "Anelia", 
+                text: "Very happy with the service provided by Emile and his team. Great advice, quick response and job was done neatly 😁 will definitely recommend.",
+                rating: 5 
+            },
+            { 
+                name: "Anna", 
+                text: "Emile’s team removed a HUGE water oak from the front yard, squeezed between the house & fence causing structural damage. The team did an excellent job, carefully removing the tree (trunk & all) without damaging the surrounding paving, buildings or other plants. This was a huge job & the team did it with a smile. I can highly recommend Emile’s team for any tree work & will use them again for yearly tree maintenance!",
+                rating: 5 
+            }
+        ];
+
+        // -----------------------------------------------------------
+        // DOM BUILDER FUNCTIONS
+        // -----------------------------------------------------------
+        const app = document.getElementById('app');
+
+        // Helper to create elements
+        const el = (tag, classes = '', content = '', attributes = {}) => {
+            const element = document.createElement(tag);
+            if (classes) element.className = classes;
+            if (content) element.innerHTML = content;
+            for (const key in attributes) {
+                element.setAttribute(key, attributes[key]);
+            }
+            return element;
+        };
+
+        // 1. Render Navbar
+        const renderNavbar = () => {
+            const nav = el('nav', '', '', {id: 'navbar'});
+            const container = el('div', 'container nav-flex');
+            
+            const logo = el('div', 'logo', `LOCAL TREE <span>PRO'S</span>`);
+            
+            const ul = el('ul', 'nav-links', '', {id: 'nav-links'});
+            ['Home', 'About', 'Services', 'AI Tools', 'Reviews', 'Contact'].forEach(item => {
+                const li = el('li');
+                // Convert "AI Tools" to "ai-tools" for the ID
+                const linkId = item === 'AI Tools' ? 'ai-tools' : item.toLowerCase();
+                const a = el('a', '', item, {href: `#${linkId}`});
+                li.appendChild(a);
+                ul.appendChild(li);
+            });
+
+            const hamburger = el('div', 'hamburger', '<i class="fas fa-bars"></i>');
+            hamburger.addEventListener('click', () => {
+                ul.classList.toggle('active');
+                hamburger.innerHTML = ul.classList.contains('active') ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+            });
+
+            // Close menu when clicking a link
+            ul.addEventListener('click', () => {
+                if(window.innerWidth < 768) {
+                    ul.classList.remove('active');
+                    hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+                }
+            });
+
+            container.appendChild(logo);
+            container.appendChild(ul);
+            container.appendChild(hamburger);
+            nav.appendChild(container);
+            app.appendChild(nav);
+        };
+
+        // 2. Render Hero
+        const renderHero = () => {
+            const section = el('section', '', '', {id: 'home'});
+            const inner = el('div', '', '', {id: 'hero'});
+            const bg = el('div', 'hero-bg');
+            
+            const contentDiv = el('div', 'hero-content reveal');
+            const h1 = el('h1', 'hero-title', `EXPERT <span class="text-red">TREE SOLUTIONS</span> FOR YOUR PROPERTY`);
+            const p = el('p', 'hero-subtitle', 'Safe. Efficient. Professional. Operating in Cape Town & Gauteng.');
+            
+            const btnContainer = el('div');
+            const cta = el('a', 'btn', 'Get A Quote', {href: '#contact'});
+            const waBtn = el('a', 'btn btn-outline', '<i class="fab fa-whatsapp"></i> WhatsApp', {href: `https://wa.me/${COMPANY_INFO.wa_phone}`, target: '_blank'});
+
+            btnContainer.appendChild(cta);
+            btnContainer.appendChild(waBtn);
+            
+            contentDiv.appendChild(h1);
+            contentDiv.appendChild(p);
+            contentDiv.appendChild(btnContainer);
+            
+            inner.appendChild(bg);
+            inner.appendChild(contentDiv);
+            section.appendChild(inner);
+            app.appendChild(section);
+        };
+
+        // 3. Render About
+        const renderAbout = () => {
+            const section = el('section', '', '', {id: 'about'});
+            const container = el('div', 'container about-grid');
+
+            // Text Column
+            const textCol = el('div', 'about-text reveal-left');
+            textCol.innerHTML = `
+                <h2 class="text-red">ESTABLISHED ${COMPANY_INFO.established}</h2>
+                <h3>PROFESSIONAL TREE FELLING EXPERTS</h3>
+                <p>Founded in 2011, Local Tree Pro's brings over a decade of specialized experience to Cape Town and Gauteng.</p>
+                <div class="personal-note">
+                    <p><strong>"Hi there, I would like to provide you with a quote on your tree project.</strong></p>
+                    <br>
+                    <p>My teams consist of fully qualified tree fellers with rope access skills, extensive experience, and the right knowledge to safely and efficiently handle any tree removal job.</p>
+                    <p>Whether it's a complex extraction squeezed between buildings or routine maintenance, we are ready to help. For a quotation, please send me photos of the trees, or simply share your address and I’ll arrange a site visit.</p>
+                    <br>
+                    <p>Looking forward to hearing from you.</p>
+                    <br>
+                    <p class="text-red"><strong>Best regards,<br>Emile Pelser<br>Local Tree Pro's</strong></p>
+                </div>
+            `;
+
+            // Image Column
+            const imgCol = el('div', 'about-img-wrapper zoom-in');
+            const img = el('img', 'about-img', '', {
+                src: 'https://images.unsplash.com/photo-1595858588012-c70d61779858?q=80&w=800&auto=format&fit=crop',
+                alt: 'Arborist at work'
+            });
+            imgCol.appendChild(img);
+
+            container.appendChild(textCol);
+            container.appendChild(imgCol);
+            section.appendChild(container);
+            app.appendChild(section);
+        };
+
+        // 4. Render Services
+        const renderServices = () => {
+            const section = el('section', '', '', {id: 'services'});
+            const container = el('div', 'container');
+            
+            const header = el('div', 'section-header reveal');
+            header.innerHTML = `<h2>OUR <span class="text-red">SERVICES</span></h2><p>We have the equipment and expertise to handle jobs of any size.</p>`;
+            
+            const grid = el('div', 'services-grid');
+            
+            SERVICES.forEach((svc, index) => {
+                const card = el('div', 'service-card reveal');
+                // Stagger animations
+                card.style.transitionDelay = `${index * 100}ms`;
+                card.innerHTML = `
+                    <i class="fas ${svc.icon} service-icon"></i>
+                    <h3>${svc.title}</h3>
+                    <p>${svc.desc}</p>
+                `;
+                grid.appendChild(card);
+            });
+
+            container.appendChild(header);
+            container.appendChild(grid);
+            section.appendChild(container);
+            app.appendChild(section);
+        };
+
+        // 5. AI TOOLS SECTION (NEW)
+        const renderAITools = () => {
+            const section = el('section', '', '', {id: 'ai-tools'});
+            const container = el('div', 'container');
+            
+            const header = el('div', 'section-header reveal');
+            header.innerHTML = `<h2>✨ AI <span class="text-red">TREE TOOLS</span></h2><p>Use our smart tools to identify trees or ask expert questions instantly.</p>`;
+            
+            const grid = el('div', 'ai-grid');
+
+            // CARD 1: TREE DOCTOR
+            const docCard = el('div', 'ai-card reveal-left');
+            docCard.innerHTML = `
+                <div class="ai-header">
+                    <div class="ai-icon"><i class="fas fa-stethoscope"></i></div>
+                    <h3>Instant Tree Doctor</h3>
+                </div>
+                <p style="margin-bottom:15px; color:#ccc;">Upload a photo of a tree. We'll identify the species and check for visible health issues.</p>
+                <div class="ai-input-group">
+                    <label class="ai-file-label">
+                        <input type="file" id="tree-photo" accept="image/*" style="display:none;">
+                        <i class="fas fa-camera"></i> Click to Upload Photo
+                    </label>
+                </div>
+                <button id="btn-analyze" class="btn" style="width:100%; display:flex; justify-content:center; align-items:center;">
+                    ✨ Analyze Tree <div class="spinner" id="spin-analyze"></div>
+                </button>
+                <div id="res-analyze" class="ai-result" style="margin-top:20px;"></div>
+            `;
+
+            // CARD 2: ASK EXPERT
+            const chatCard = el('div', 'ai-card reveal');
+            chatCard.innerHTML = `
+                <div class="ai-header">
+                    <div class="ai-icon"><i class="fas fa-comments"></i></div>
+                    <h3>Ask the Expert</h3>
+                </div>
+                <p style="margin-bottom:15px; color:#ccc;">Have a question about permits, pruning seasons, or tree care? Ask us!</p>
+                <div class="ai-input-group">
+                    <textarea id="chat-input" class="ai-input" rows="3" placeholder="e.g. Do I need a permit to remove a tree in Cape Town?"></textarea>
+                </div>
+                <button id="btn-ask" class="btn" style="width:100%; display:flex; justify-content:center; align-items:center;">
+                    ✨ Ask Question <div class="spinner" id="spin-ask"></div>
+                </button>
+                <div id="res-ask" class="ai-result" style="margin-top:20px;"></div>
+            `;
+
+            grid.appendChild(docCard);
+            grid.appendChild(chatCard);
+            container.appendChild(header);
+            container.appendChild(grid);
+            section.appendChild(container);
+            app.appendChild(section);
+
+            // --- LOGIC FOR AI TOOLS ---
+            setTimeout(() => {
+                // 1. Tree Doctor Logic
+                const fileInput = document.getElementById('tree-photo');
+                const btnAnalyze = document.getElementById('btn-analyze');
+                const spinAnalyze = document.getElementById('spin-analyze');
+                const resAnalyze = document.getElementById('res-analyze');
+                const labelAnalyze = document.querySelector('.ai-file-label');
+
+                fileInput.addEventListener('change', (e) => {
+                    if(e.target.files.length > 0) {
+                        labelAnalyze.innerHTML = `<i class="fas fa-check"></i> ${e.target.files[0].name}`;
+                        labelAnalyze.style.borderColor = 'var(--earth-green)';
+                        labelAnalyze.style.color = 'var(--earth-green)';
+                    }
+                });
+
+                btnAnalyze.addEventListener('click', async () => {
+                    if (fileInput.files.length === 0) {
+                        alert("Please select a photo first.");
+                        return;
+                    }
+                    
+                    const file = fileInput.files[0];
+                    const reader = new FileReader();
+                    
+                    spinAnalyze.style.display = 'block';
+                    btnAnalyze.disabled = true;
+                    resAnalyze.style.display = 'none';
+
+                    reader.onloadend = async function() {
+                        const base64String = reader.result.replace("data:", "").replace(/^.+,/, "");
+                        const result = await callGeminiVision(base64String, "Identify this tree species and comment on its visible health or any safety risks. Be concise.");
+                        
+                        resAnalyze.innerText = result;
+                        resAnalyze.classList.add('visible');
+                        resAnalyze.style.display = 'block';
+                        spinAnalyze.style.display = 'none';
+                        btnAnalyze.disabled = false;
+                    }
+                    reader.readAsDataURL(file);
+                });
+
+                // 2. Chat Logic
+                const chatInput = document.getElementById('chat-input');
+                const btnAsk = document.getElementById('btn-ask');
+                const spinAsk = document.getElementById('spin-ask');
+                const resAsk = document.getElementById('res-ask');
+
+                btnAsk.addEventListener('click', async () => {
+                    const question = chatInput.value.trim();
+                    if (!question) return;
+
+                    spinAsk.style.display = 'block';
+                    btnAsk.disabled = true;
+                    resAsk.style.display = 'none';
+
+                    const answer = await callGeminiText(question);
+
+                    resAsk.innerText = answer;
+                    resAsk.classList.add('visible');
+                    resAsk.style.display = 'block';
+                    spinAsk.style.display = 'none';
+                    btnAsk.disabled = false;
+                });
+
+            }, 500); // Small delay to ensure DOM insertion
+        };
+
+        // 6. Render Locations
+        const renderLocations = () => {
+            const section = el('section', '', '', {id: 'locations'});
+            const container = el('div', 'container reveal');
+            
+            let tagsHtml = '';
+            COMPANY_INFO.locations.forEach(loc => {
+                tagsHtml += `<div class="loc-tag"><i class="fas fa-map-marker-alt"></i> ${loc}</div>`;
+            });
+
+            container.innerHTML = `
+                <h2>AREAS WE SERVICE</h2>
+                <p>Proudly operating in the Western Cape and Gauteng</p>
+                <div class="location-tags">${tagsHtml}</div>
+            `;
+            
+            section.appendChild(container);
+            app.appendChild(section);
+        };
+
+        // 7. Render Reviews
+        const renderReviews = () => {
+            const section = el('section', '', '', {id: 'reviews'});
+            const container = el('div', 'container');
+            
+            const header = el('div', 'section-header reveal');
+            header.innerHTML = `<h2>CLIENT <span class="text-red">REVIEWS</span></h2><p>See what our happy customers have to say.</p>`;
+            
+            const grid = el('div', 'reviews-grid');
+
+            REVIEWS.forEach((review, index) => {
+                const card = el('div', 'review-card zoom-in');
+                card.style.transitionDelay = `${index * 150}ms`;
+                
+                const stars = '<i class="fas fa-star"></i>'.repeat(review.rating);
+                
+                card.innerHTML = `
+                    <i class="fas fa-quote-right quote-icon"></i>
+                    <div class="stars">${stars}</div>
+                    <p class="review-text">"${review.text}"</p>
+                    <p class="reviewer-name">- ${review.name}</p>
+                `;
+                grid.appendChild(card);
+            });
+
+            const barkLink = el('div', 'text-center reveal');
+            barkLink.innerHTML = `<a href="${COMPANY_INFO.bark_link}" target="_blank" class="bark-link">Read more reviews on Bark</a>`;
+
+            container.appendChild(header);
+            container.appendChild(grid);
+            container.appendChild(barkLink);
+            section.appendChild(container);
+            app.appendChild(section);
+        };
+
+        // 8. Render Contact/Footer
+        const renderContact = () => {
+            const section = el('section', '', '', {id: 'contact'});
+            const container = el('div', 'container contact-flex reveal');
+            
+            container.innerHTML = `
+                <h2>GET A <span class="text-red">FREE QUOTE</span> TODAY</h2>
+                <p>Send us photos of your trees via WhatsApp or Email for an instant assessment.</p>
+                
+                <div class="contact-details">
+                    <a href="tel:${COMPANY_INFO.phone}" class="contact-item">
+                        <i class="fas fa-phone"></i> ${COMPANY_INFO.phone}
+                    </a>
+                    <a href="mailto:${COMPANY_INFO.email}" class="contact-item">
+                        <i class="fas fa-envelope"></i> ${COMPANY_INFO.email}
+                    </a>
+                    <a href="https://wa.me/${COMPANY_INFO.wa_phone}" target="_blank" class="contact-item">
+                        <i class="fab fa-whatsapp"></i> Message on WhatsApp
+                    </a>
+                </div>
+            `;
+
+            section.appendChild(container);
+            app.appendChild(section);
+        };
+
+        const renderFooter = () => {
+            const footer = el('footer');
+            footer.innerHTML = `
+                <div class="container">
+                    <p>&copy; ${new Date().getFullYear()} ${COMPANY_INFO.name}. All Rights Reserved.</p>
+                    <p style="font-size: 0.7rem; color: #444; margin-top: 5px;">Professional Tree Felling & Landscaping Services.</p>
+                </div>
+            `;
+            app.appendChild(footer);
+        };
+
+        const renderFloatingButtons = () => {
+            const container = el('div', 'floating-container');
+            
+            const xBtn = el('a', 'float-btn float-x', '<i class="fab fa-x-twitter"></i>', {
+                href: COMPANY_INFO.twitter_link,
+                target: '_blank',
+                'data-tooltip': 'Follow on X'
+            });
+
+            const mailBtn = el('a', 'float-btn float-email', '<i class="fas fa-envelope"></i>', {
+                href: `mailto:${COMPANY_INFO.email}`,
+                'data-tooltip': 'Send Email'
+            });
+
+            const waBtn = el('a', 'float-btn float-wa', '<i class="fab fa-whatsapp"></i>', {
+                href: `https://wa.me/${COMPANY_INFO.wa_phone}`,
+                target: '_blank',
+                'data-tooltip': 'Chat on WhatsApp'
+            });
+
+            container.appendChild(xBtn); // Bottom most (visual, but reversed in flex)
+            container.appendChild(mailBtn);
+            container.appendChild(waBtn); // Top most
+            
+            app.appendChild(container);
+        };
+
+        // -----------------------------------------------------------
+        // INITIALIZATION
+        // -----------------------------------------------------------
+        const init = () => {
+            renderNavbar();
+            renderHero();
+            renderAbout();
+            renderServices();
+            renderAITools(); // Added new section
+            renderLocations();
+            renderReviews();
+            renderContact();
+            renderFooter();
+            renderFloatingButtons();
+
+            // Navbar Scroll Logic
+            window.addEventListener('scroll', () => {
+                const nav = document.getElementById('navbar');
+                if (window.scrollY > 50) {
+                    nav.classList.add('scrolled');
+                } else {
+                    nav.classList.remove('scrolled');
+                }
+            });
+
+            // Intersection Observer for Animations
+            const observerOptions = {
+                threshold: 0.15, // Trigger when 15% of element is visible
+                rootMargin: "0px 0px -50px 0px"
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target); // Only animate once
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.reveal, .reveal-left, .zoom-in').forEach(el => {
+                observer.observe(el);
+            });
+        };
+
+        // Run
+        document.addEventListener('DOMContentLoaded', init);
+
+    </script>
+</body>
+</html>
